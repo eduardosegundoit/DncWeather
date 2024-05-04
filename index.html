@@ -4,101 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title> DncWeather </title>
 </head>
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-              <span class="navbar-brand h1">DncWeather</span>   
-                <div class="d-flex">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                          <a class="nav-link" aria-current="page" href="#AncoraCep">Endereços</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#ancoraPrevisao">Previsão do tempo</a>
-                        </li>
-                    </div>
-              </div>
-            </div>
-          </nav>
+        <h1>DncWeather</h1>
+        <nav>
+            <ul >
+                <li>
+                    <a href="#AncoraCep">Endereços</a>
+                </li>
+                <li>
+                    <a href="#ancoraPrevisao">Previsão do Tempo</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-
-    <article class="d-flex justify-content-center">
-        <div class="h2 h2-texto">
-            Descubra Mais com Precisão: Previsões do Tempo e endereços em tempo real.   
-        </div>
-        <img src="img/nuvem.svg" class="rounded float-end" alt="...">
-    </article>
-
+    
     <main >
-        <section class="container d-flex justify-content-center">
-                <form id="formDados" class="main-div d-flex">
-                    <div class="mb-3 col-8">
-                        <label for="FormNome" class="form-label mb-3">Primeiro Nome:</label>
+        <article class="art-text">
+            <div>
+                <h2>Descubra Mais com Precisão: Previsões do Tempo e endereços em tempo real.</h2>
+            </div>
+            <img id="nuvem-art" src="img/nuvem.svg" class="rounded float-end" alt="...">
+        </article>
+
+    
+        <section class="formDados">
+                <form>
+                    <div class="container-form">
+                        <label for="FormNome" >Primeiro Nome:</label>
                         <input id="FormNome" type="text" class="form-control" id="PrimeiroNome" placeholder="Insira seu primeiro nome:" required>
                     </div>
-                    <div class="mb-3 col-8">
-                        <label for="FormEmail" class="form-label mb-3">E-mail:</label>
+                    <div class="container-form">
+                        <label for="FormEmail" >E-mail:</label>
                         <input id="FormEmail" type="email" class="form-control" placeholder="Insira seu e-mail" required>
                     </div>
-                    <div class="mb-3 col-8">
-                        <label for="CampoCep" class="form-label mb-3">Digite o CEP:</label>
+                    <div class="container-form">
+                        <label for="CampoCep" >Digite o CEP:</label>
                         <input type="number" oninput="LimitarNumeros()" minlength="0" maxlength="99999999" class="form-control" id="CampoCep" placeholder="Insira o CEP" required>
                     </div>
-                    <div class="mb-3 col-8">
-                        <label class="form-label mb-3">Digite a latitude e longitude para saber a previsão:</label>
-                        <div class="row"> 
-                            <div class="mb-3 col-6">
-                            <input id="FormLatitude" type="text" class="form-control" placeholder="Latitude" aria-label="Latitude" required>
-                            </div>
-                            <div class="mb-3 col-6">
-                            <input  id="FormLongitude" type="text" class="form-control" placeholder="Longitude" aria-label="Longitude" required>
-                            </div>
+                    <div class="container-form"><label>Digite a latitude e longitude para saber a previsão:</label></div>
+                    <div class="container-form latitude-width"> 
+                        <div class="container-form">
+                            <input id="FormLatitude" type="number" class="lat-long" placeholder="Latitude" aria-label="Latitude" required>
+                        </div>
+                        <div class="container-form">
+                            <input  id="FormLongitude" type="number" class="lat-long" placeholder="Longitude" aria-label="Longitude" required>
                         </div>
                     </div>
-                    <div class="mb-3 botao">
-                        <button id="btnForm" onclick="GetCepAndTemperature()" class="btn btn-primary" type="button">Acessar</button>
+                    <div id="container-btn">
+                        <button id="btnForm" onclick="GetCepAndTemperature()" class="btn" type="button">Acessar</button>
                     </div>
                 </form>
         </section>
         
 
-        <section id="container2" class="d-flex">
-            <div>
-                <div class="h3-resultado d-flex">
-                <span id="AncoraCep">Resultado da busca por CEP:</span><img src="img/ponto-mapa.svg" alt="...">
-                </div>
-                <div class="d-flex nome-resultado mt-3">
-                    <span>Logradouro/nome</span> <span>Bairro/Distrito</span> <span>Localidade/UF</span>
-                </div>
-                <div class="d-flex nome-resultado" id="resultado">
-                    <span id="rua"></span> <span id="bairro"></span> <span id="localidade"></span>
-                </div>
+        <section class="container-cep">
+            <div class="cep">
+                <h2 id="AncoraCep">Resultado da busca por CEP:</h2>
+                <img src="img/ponto-mapa.svg" alt="...">
+            </div>
+            <div class="nome-resultado">
+                <h5>Logradouro/nome</h5>
+                <h5>Bairro/Distrito</h5>
+                <h5>Localidade/UF</h5>
+            </div>
+            <div class="nome-resultado" id="resultado">
+                <span id="rua"></span> <span id="bairro"></span>
+                <span id="localidade"></span>
+            </div>
             </div>
             <div>
-                <div class="h3-resultado d-flex" id="previsao">
-                    <span id="ancoraPrevisao">Previsão do tempo na região:</span><img src="img/nuvem2.svg" alt="...">
+                <div id="previsao">
+                    <h2 id="ancoraPrevisao">Previsão do tempo na região:</h2>
+                    <img src="img/nuvem2.svg" alt="...">
                 </div>
-                <div  id="resPrev" class="container-fluid d-flex nome-resultado mt-3">
-                    <span>Previsão de tempo de acordo com a região:<span id="resultadoPrevisao"></span></span>
+                <div  class="resPrev">
+                    <h5>Previsão de acordo com a região:<h5 id="resultadoPrevisao"></h5></h5>
                 </div>
-            </div>
         </section>
     </main>
-    <footer class="d-flex">
+    <footer>
         <div id="lk-footer">
             <a class="footer-link" href="#">Termos de Uso</a><span>|</span>
             <a class="footer-link" href="#">Política de Privacidade</a>
         </div>
     </footer>    
 
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="script.js"></script>   
 </body>
 </html>
